@@ -1,5 +1,8 @@
 # Dockerfile for redis
 # acdaic4v 22.12.2015
 
-FROM redis:3.0.7
+FROM redis:3.2.3
 MAINTAINER acdaic4v <acdaic4v@sloervi.de>
+RUN /bin/echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+RUN /bin/echo never > /sys/kernel/mm/transparent_hugepage/enabled
+RUN /bin/echo "/bin/echo never > /sys/kernel/mm/transparent_hugepage/enabled" >> /etc/rc.local
